@@ -1,0 +1,59 @@
+---
+title: "Fase 1: Bygg"
+sidebar:
+  order: 1
+---
+
+## Eksempel
+
+Se for deg at du jobber med en webapplikasjon, og du har en ny funksjon som du vil legge til.
+Koden til webapplikasjonen er lagret på github, og du har laget en ny branch for å jobbe med den nye funksjonen.
+Du har skrevet koden, og nå vil du teste at koden fungerer som forventet.
+For å gjøre dette, må du bygge prosjektet ditt.
+
+## Bygg
+
+Når vi snakker om bygg i konteksten av programvareutvikling,
+refererer vi til prosessen med å kompilere og pakke koden vår slik at den kan kjøres på en maskin.
+
+I eksempelet vist tidligere vil byggprosessen kompilere HTML, CSS og JavaScript-filene dine til en enkelt pakke som kan lastes inn i en nettleser.
+Byggingen kan feile hvis det er syntaksfeil i koden din, eller hvis det er avhengigheter som mangler.
+Det er derfor viktig å kjøre byggprosessen før du tester koden din.
+
+## Bygg verktøy (Docker og Jenkins)
+
+Det finnes mange verktøy som kan hjelpe deg med byggprosessen. To populære verktøy er Docker og Jenkins.
+Begge verktøyene kan automatisere byggprosessen, slik at du kan teste koden din raskere og mer effektivt.
+Forskjellen mellom de to verktøyene er at Docker fokuserer på å pakke applikasjonen din i en container,
+mens Jenkins fokuserer på å automatisere hele CI/CD-prosessen.
+Det er derfor vanlig å bruke begge verktøyene sammen for å oppnå best mulig resultat.
+
+## Docker
+
+Docker er et verktøy som lar deg pakke applikasjonen din og dens avhengigheter i en container.
+En container er en lettvekts virtuell maskin som kjører applikasjonen din isolert fra resten av systemet.
+Dette gjør det enkelt å distribuere applikasjonen din på tvers av forskjellige miljøer, og sikrer at den fungerer som forventet uansett hvor den kjøres.
+Docker inneholder også funksjoner for sikkerhet, som lar deg isolere applikasjonen din fra resten av systemet.
+Dette betyr at selv om en del av applikasjonen din blir kompromittert, vil det ikke påvirke resten av systemet.
+
+## Jenkins
+
+Jenkins er et verktøy som lar deg automatisere hele CI/CD-prosessen.
+Dette betyr at du kan konfigurere Jenkins til å bygge, teste og utplassere koden din automatisk hver gang du gjør en endring.
+Dette sparer deg for tid og reduserer risikoen for feil, da du ikke trenger å gjøre alt manuelt.
+Jenkins har også et stort økosystem av plugins som lar deg tilpasse verktøyet til dine behov.
+
+## Test deg selv
+
+import SelectCorrect from "../../../../components/SelectCorrect.astro";
+
+<SelectCorrect
+  question="Hva gjør 'git add' kommandoen i Git?"
+  correct="Den flytter filen med sine nåværende endringer til staging-området."
+  wrong1="Den skaper en ny fil i Git repository."
+  wrong2="Den flytter alle endringene fra lokalt repository til eksternt repository."
+/>
+
+import LikeThisPage from "../../../../components/LikeThisPage.astro";
+
+<LikeThisPage />

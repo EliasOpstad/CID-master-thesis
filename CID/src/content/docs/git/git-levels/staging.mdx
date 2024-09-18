@@ -8,22 +8,24 @@ sidebar:
 ## Forstå Staging: Hvilke endringer skal med i historikken?
 
 Når du har bedt Git om å følge med på filene, kommer du til neste nivå - staging. Staging-nivået er stedet hvor du organiserer og sørger for at kun ønskede endringer blir del av den neste "commiten", eller sagt på en annen måte, en ny versjon i prosjektets historikk. På dette nivået kan du finjustere hva som blir lagt til din Git-historikk.
+
 ## Hvordan legger vi til filer i Staging?
 
-For å gi en fil klarering til dem neste historiske trinnet i Git, bruker vi git add-kommandoen. Den gir beskjed til Git om å inkludere endringene i disse filene når du er klar for å lagre en ny "versjon" i historikken. 
+For å gi en fil klarering til dem neste historiske trinnet i Git, bruker vi git add-kommandoen. Den gir beskjed til Git om å inkludere endringene i disse filene når du er klar for å lagre en ny "versjon" i historikken.
 
 ## Se for deg dette:
+
 Du har jobbet hardt med din skole-oblig `oblig1.py` og er fornøyd med progresjonen. Ved siden av det, har du eksperimentert med noe i en annen fil kalt `test.py`, men det var kun for å prøve noe ut. Du vil ikke at dine kortvarige tester skal bli med i prosjetets git-historie. Så, du velger å kun legge til `oblig1.py` i staging ved å bruke `git add oblig1.py` og etterlater `test.py` i usporet tilstand (untracked). På denne måten, når du bekrefter endringene så havner kun det seriøse arbeidet ditt i `oblig1.py` i Git-historikken.
 
-import SelectCorrect from '../../../components/SelectCorrect.astro';
+import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
-<SelectCorrect 
+<SelectCorrect
   question="Hva er formålet med å legge til filer i Staging før du committer i Git?"
   correct="Å velge spesifikke endringer som skal inkluderes i neste commit."
   wrong1="Å automatisk overføre filer til en fjernrepository."
   wrong2="Å spore nye filer som ikke var en del av prosjektet tidligere."
 />
 
-import LikeThisPage from '../../../components/LikeThisPage.astro';
+import LikeThisPage from "../../../../components/LikeThisPage.astro";
 
 <LikeThisPage />

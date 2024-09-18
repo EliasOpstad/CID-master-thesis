@@ -1,0 +1,97 @@
+---
+title: "Fase 2: Testing"
+sidebar:
+  order: 2
+---
+
+Etter at byggprosessen er fullført, er det viktig å teste koden din for å sikre at den fungerer som forventet.
+Dette kan inkludere enhetstester, integrasjonstester og end-to-end tester.
+
+**_Enhetstester_** fokuserer på å teste individuelle komponenter eller funksjoner i koden din.
+
+**_Integrasjonstester_** tester hvordan disse komponentene samhandler.
+
+**_End-to-end_** tester simulerer brukerinteraksjoner for å teste hele applikasjonen.
+
+Testing er en viktig del av CI/CD-prosessen, og kan bidra til å oppdage feil tidlig i utviklingsprosessen.
+
+### Eksempel enhetstest
+
+Nettsiden vår har en funksjon for å legge til kommentarer. Vi vil teste at denne funksjonen fungerer som forventet.
+Vi kan skrive en **_enhetstest_** for å sjekke at kommentaren blir lagt til i databasen når brukeren trykker på "Legg til kommentar" knappen.
+
+```javascript
+test("Legg til kommentar", () => {
+  // Simulerer brukerens input
+  userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
+  userEvent.click(screen.getByText("Legg til kommentar"));
+
+  // Sjekker at kommentaren er lagt til i databasen
+  expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
+});
+```
+
+### Eksempel integrasjonstest i Docker
+
+Vi har en webapplikasjon som består av en frontend og en backend. Vi vil teste at frontend og backend kommuniserer riktig.
+Vi kan skrive en **_integrasjonstest_** for å sjekke at frontend kan hente data fra backend.
+Integrasjonstesten kan kjøres i en Docker container for å isolere testene fra resten av systemet.
+
+```javascript
+test("Hente data fra backend", async () => {
+  // Starter frontend og backend i Docker container
+  const { frontend, backend } = await startContainers();
+
+  // Henter data fra backend
+  const data = await frontend.getData();
+
+  // Sjekker at data er hentet riktig
+  expect(data).toEqual({ message: "Hello, world!" });
+
+  // Stopper Docker containerne
+  await stopContainers(frontend, backend);
+});
+```
+
+### Eksempel end-to-end test
+
+Vi vil teste at hele applikasjonen fungerer som forventet når en bruker logger inn og legger til en kommentar.
+Vi kan skrive en **_end-to-end test_** for å simulere disse brukerinteraksjonene.
+
+    ```javascript
+    test("Legg til kommentar etter innlogging", async () => {
+
+// Simulerer brukerens innlogging
+userEvent.type(screen.getByLabelText("Brukernavn"), "testbruker");
+userEvent.type(screen.getByLabelText("Passord"), "hemmelig");
+userEvent.click(screen.getByText("Logg inn"));
+
+// Simulerer brukerens input
+userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
+userEvent.click(screen.getByText("Legg til kommentar"));
+
+// Sjekker at kommentaren er lagt til i databasen
+expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
+});
+
+```
+
+## Test deg selv
+
+import SelectCorrect from "../../../../components/SelectCorrect.astro";
+
+<SelectCorrect
+  question="Hva gjør 'git add' kommandoen i Git?"
+  correct="Den flytter filen med sine nåværende endringer til staging-området."
+  wrong1="Den skaper en ny fil i Git repository."
+  wrong2="Den flytter alle endringene fra lokalt repository til eksternt repository."
+/>
+
+import LikeThisPage from "../../../../components/LikeThisPage.astro";
+
+<LikeThisPage />
+```
+
+```
+
+```
