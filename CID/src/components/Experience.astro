@@ -18,18 +18,33 @@
 	</div>
 </experience-question>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KD4HLKED4P"></script>
-
+<!-- Datadog Logging -->
+<script src="https://www.datadoghq-browser-agent.com/datadog-logs-us.js"></script>
 <script>
+	// Extend the Window interface to include DD_LOGS
+	declare global {
+		interface Window {
+			DD_LOGS?: {
+				init: (options: any) => void;
+				logger: {
+					log: (message: string, context: any) => void;
+				};
+			};
+		}
+	}
+
 	class ExperienceQuestion extends HTMLElement {
 		constructor() {
 			super();
 
-			//@ts-ignore
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				//@ts-ignore
-				dataLayer.push(arguments);
+			// Initialize Datadog Logging
+			if (window.DD_LOGS) {
+				window.DD_LOGS.init({
+					clientToken: 'pub2490c82193d6cd371c7bf1b1e443cfbf', // Replace with your Datadog client token
+					site: 'datadoghq.com',
+					forwardErrorsToLogs: true,
+					sampleRate: 100,
+				});
 			}
 
 			const buttons = Array.from(this.querySelectorAll('button.option')) as HTMLButtonElement[];
@@ -42,11 +57,13 @@
 			}
 
 			function send_event(event_name: string) {
-				//@ts-ignore
-				gtag('event', event_name, {
-					event_category: 'experience',
-					event_label: event_name,
-				});
+				if (window.DD_LOGS) {
+					window.DD_LOGS.logger.log('experience_event', {
+						event_name: event_name,
+						event_category: 'experience',
+						event_label: event_name,
+					});
+				}
 
 				buttons.forEach((button) => {
 					button.disabled = true;
