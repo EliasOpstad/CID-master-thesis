@@ -35,24 +35,24 @@ for (let i = answers.length - 1; i > 0; i--) {
 </select-correct>
 
 <!-- Datadog RUM -->
-<script src="https://www.datadoghq-browser-agent.com/datadog-logs-us.js"></script>
+<script src="https://www.datadoghq-browser-agent.com/datadog-rum-us.js"></script>
 <script>
   // Extend the Window interface to include DD_LOGS
   import { datadogRum } from "@datadog/browser-rum";
   datadogRum.init({
-    applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
-    clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
-    site: 'us5.datadoghq.com',
-    service: 'cid',
-    env: 'prod',
-    version: '1.0.0',
-    sessionSampleRate: 100,
-    sessionReplaySampleRate: 20,
-    trackUserInteractions: true,
-    trackResources: true,
-    trackLongTasks: true,
-    defaultPrivacyLevel: 'mask-user-input',
-  });
+		applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
+		clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
+		site: 'us5.datadoghq.com',
+		service: 'cid',
+		env: 'prod',
+		version: '1.0.0',
+		sessionSampleRate: 100,
+		sessionReplaySampleRate: 20,
+		trackUserInteractions: true,
+		trackResources: true,
+		trackLongTasks: true,
+		defaultPrivacyLevel: 'mask-user-input',
+	});
 
   class Selection extends HTMLElement {
     constructor() {
