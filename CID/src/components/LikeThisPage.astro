@@ -8,75 +8,70 @@ interface Props {}
     <button class="like">👍</button>
     <button class="dislike">👎</button>
   </div>
-  <p class="thanks" hidden="true">Takk for tilbakemelding!</p>
+  <p class="thanks" hidden>Takk for tilbakemelding!</p>
 </like-this-page>
 
-<!-- Datadog Logging -->
-<script src="https://www.datadoghq-browser-agent.com/datadog-logs-us.js"></script>
+<script
+    src="https://www.datadoghq-browser-agent.com/us5/v5/datadog-rum.js"
+    type="text/javascript"
+    async>
+</script>
 <script>
-  // Extend the Window interface to include DD_LOGS
-  interface Window {
-    DD_LOGS?: {
-      init: (options: any) => void;
-      logger: {
-        log: (message: string, context: any) => void;
-      };
-    };
-  }
-
-  class LikeThisPage extends HTMLElement {
-    constructor() {
-      super();
-
-      // Initialize Datadog Logging
-      if (window.DD_LOGS) {
-        window.DD_LOGS.init({
-          clientToken: 'pub2490c82193d6cd371c7bf1b1e443cfbf', 
-          site: 'datadoghq.com',
-          forwardErrorsToLogs: true,
-          sampleRate: 100,
-        });
-      }
-
-      const likeButton = this.querySelector('button.like') as HTMLButtonElement;
-      if (likeButton == undefined) return;
-      const dislikeButton = this.querySelector('button.dislike') as HTMLButtonElement;
-      if (dislikeButton == undefined) return;
-      const thanksMessage = this.querySelector('p.thanks') as HTMLParagraphElement;
-      if (thanksMessage == undefined) return;
-
-      function disableButtons() {
-        likeButton.disabled = true;
-        dislikeButton.disabled = true;
-
-        thanksMessage.hidden = false;
-      }
-
-      likeButton.addEventListener('click', () => {
-        if (window.DD_LOGS) {
-          window.DD_LOGS.logger.log('like', {
-            event_category: 'Like',
-            event_label: 'Liked the page',
-          });
-        }
-
-        disableButtons();
+  window.onload = function() {
+    if (window.DD_RUM) {
+      window.DD_RUM.init({
+        clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
+        applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
+        site: 'us5.datadoghq.com',
+        service: 'cid',
+        env: 'prod',
+        sessionSampleRate: 100,
+        sessionReplaySampleRate: 20,
+        trackUserInteractions: true,
+        trackResources: true,
+        trackLongTasks: true,
+        defaultPrivacyLevel: 'mask-user-input',
       });
 
-      dislikeButton.addEventListener('click', () => {
-        if (window.DD_LOGS) {
-          window.DD_LOGS.logger.log('dislike', {
-            event_category: 'Dislike',
-            event_label: 'Disliked the page',
+      class LikeThisPage extends HTMLElement {
+        constructor() {
+          super();
+
+          const likeButton = this.querySelector('button.like');
+          const dislikeButton = this.querySelector('button.dislike');
+          const thanksMessage = this.querySelector('p.thanks');
+
+          if (!likeButton || !dislikeButton || !thanksMessage) return;
+
+          function disableButtons() {
+            likeButton.disabled = true;
+            dislikeButton.disabled = true;
+            thanksMessage.hidden = false;
+          }
+
+          likeButton.addEventListener('click', () => {
+            window.DD_RUM.addAction('like', {
+              event_category: 'Like',
+              event_label: 'Liked the page',
+            });
+            disableButtons();
+          });
+
+          dislikeButton.addEventListener('click', () => {
+            window.DD_RUM.addAction('dislike', {
+              event_category: 'Dislike',
+              event_label: 'Disliked the page',
+            });
+            disableButtons();
           });
         }
+      }
 
-        disableButtons();
-      });
+      customElements.define('like-this-page', LikeThisPage);
+    } else {
+      console.error('Datadog RUM library failed to load.');
     }
-  }
-
-  customElements.define('like-this-page', LikeThisPage);
+  };
 </script>
 
 <style>
@@ -89,7 +84,7 @@ interface Props {}
 
   button {
     font-size: 1.2rem;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     width: 2rem;
     height: 2rem;
     margin-top: 0 !important;
