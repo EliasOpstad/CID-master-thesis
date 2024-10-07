@@ -10,73 +10,83 @@ import Default from '@astrojs/starlight/components/Head.astro';
 <script>
 import { datadogRum } from "@datadog/browser-rum";
 
-  (function() {
+(function() {
     function setCookie(name: string, value: string, days: number) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        console.log(`Set cookie: ${name}=${value}; expires=${expires}`);
     }
 
     function getCookie(name: string) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
     }
 
     function generateAnonymousID() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      });
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
     }
 
     function getUserID() {
-      var userId = getCookie('anonymous_id');
-      if (!userId) {
-        userId = generateAnonymousID();
-        setCookie('anonymous_id', userId, 365); // Cookie lasts for 1 year
-      }
-      return userId;
+        var userId = getCookie('anonymous_id');
+        if (!userId) {
+            userId = generateAnonymousID();
+            setCookie('anonymous_id', userId, 365); // Cookie lasts for 1 year
+            userId = getCookie('anonymous_id'); // Check if cookie is set
+            console.log(`After setting, User ID: ${userId}`);
+        } else {
+            console.log(`Existing User ID: ${userId}`);
+        }
+        return userId;
     }
 
     const userId = getUserID();
     const isReturningUser = !!getCookie('anonymous_id');
     const userStatus = isReturningUser ? 'returning' : 'new';
 
+    console.log(`Is returning user: ${isReturningUser}`);
+    console.log(`User status: ${userStatus}`);
+
     // Ensure datadogRum is loaded
     if (typeof datadogRum !== "undefined") {
-      datadogRum.init({
-        applicationId: '<APPLICATION_ID>',
-        clientToken: '<CLIENT_TOKEN>',
-        site: 'us5.datadoghq.com',
-        service: 'cid',
-        env: 'prod',
-        version: '1.0.0',
-        sessionSampleRate: 100,
-        sessionReplaySampleRate: 20,
-        trackUserInteractions: true,
-        trackResources: true,
-        trackLongTasks: true,
-        defaultPrivacyLevel: 'mask-user-input',
-      });
+        console.log('Initializing Datadog RUM');
+        datadogRum.init({
+            applicationId: '<APPLICATION_ID>',
+            clientToken: '<CLIENT_TOKEN>',
+            site: 'us5.datadoghq.com',
+            service: 'cid',
+            env: 'prod',
+            version: '1.0.0',
+            sessionSampleRate: 100,
+            sessionReplaySampleRate: 20,
+            trackUserInteractions: true,
+            trackResources: true,
+            trackLongTasks: true,
+            defaultPrivacyLevel: 'mask-user-input',
+        });
 
-      datadogRum.setUser({
-        id: userId,
-        status: userStatus
-      });
+        datadogRum.setUser({
+            id: userId || '',
+            status: userStatus
+        });
 
-      datadogRum.startSessionReplayRecording();
+        datadogRum.startSessionReplayRecording();
+        console.log('Datadog RUM started and session replay recording');
     } else {
-      console.error('Datadog RUM library failed to load.');
+        console.error('Datadog RUM library failed to load.');
     }
-  })();
+})();
 </script>
