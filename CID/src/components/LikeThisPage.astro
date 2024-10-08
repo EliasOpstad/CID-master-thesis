@@ -11,67 +11,52 @@ interface Props {}
   <p class="thanks" hidden>Takk for tilbakemelding!</p>
 </like-this-page>
 
-<script
-    src="https://www.datadoghq-browser-agent.com/us5/v5/datadog-rum.js"
-    type="text/javascript"
-    async>
-</script>
 <script>
-  window.onload = function() {
-    if (window.DD_RUM) {
-      window.DD_RUM.init({
-        clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
-        applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
-        site: 'us5.datadoghq.com',
-        service: 'cid',
-        env: 'prod',
-        sessionSampleRate: 100,
-        sessionReplaySampleRate: 20,
-        trackUserInteractions: true,
-        trackResources: true,
-        trackLongTasks: true,
-        defaultPrivacyLevel: 'mask-user-input',
-      });
+  import { datadogRum } from "@datadog/browser-rum";
 
-      class LikeThisPage extends HTMLElement {
-        constructor() {
-          super();
+  class LikeThisPage extends HTMLElement {
+    constructor() {
+      super();
+      this.attachEventHandlers();
+    }
 
-          const likeButton = this.querySelector('button.like');
-          const dislikeButton = this.querySelector('button.dislike');
-          const thanksMessage = this.querySelector('p.thanks');
+    attachEventHandlers() {
+      const likeButton = this.querySelector('button.like');
+      const dislikeButton = this.querySelector('button.dislike');
+      const thanksMessage = this.querySelector('p.thanks');
 
-          if (!likeButton || !dislikeButton || !thanksMessage) return;
-
-          function disableButtons() {
-            likeButton.disabled = true;
-            dislikeButton.disabled = true;
-            thanksMessage.hidden = false;
-          }
-
-          likeButton.addEventListener('click', () => {
-            window.DD_RUM.addAction('like', {
-              event_category: 'Like',
-              event_label: 'Liked the page',
-            });
-            disableButtons();
-          });
-
-          dislikeButton.addEventListener('click', () => {
-            window.DD_RUM.addAction('dislike', {
-              event_category: 'Dislike',
-              event_label: 'Disliked the page',
-            });
-            disableButtons();
-          });
-        }
+      if (!likeButton || !dislikeButton || !thanksMessage) {
+        console.error('Buttons or thanks message not found');
+        return;
       }
 
-      customElements.define('like-this-page', LikeThisPage);
-    } else {
-      console.error('Datadog RUM library failed to load.');
+      const disableButtons = () => {
+        likeButton.disabled = true;
+        dislikeButton.disabled = true;
+        thanksMessage.hidden = false;
+      };
+
+      likeButton.addEventListener('click', () => {
+        console.log('Like button clicked');
+        datadogRum.addAction('like', {
+          event_category: 'Like',
+          event_label: 'Liked the page',
+        });
+        disableButtons();
+      });
+
+      dislikeButton.addEventListener('click', () => {
+        console.log('Dislike button clicked');
+        datadogRum.addAction('dislike', {
+          event_category: 'Dislike',
+          event_label: 'Disliked the page',
+        });
+        disableButtons();
+      });
     }
-  };
+  }
+
+  customElements.define('like-this-page', LikeThisPage);
 </script>
 
 <style>
@@ -84,7 +69,7 @@ interface Props {}
 
   button {
     font-size: 1.2rem;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     width: 2rem;
     height: 2rem;
     margin-top: 0 !important;
