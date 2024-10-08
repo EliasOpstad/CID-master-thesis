@@ -59,39 +59,34 @@ Vi vil teste at hele applikasjonen fungerer som forventet når en bruker logger 
 Vi kan skrive en **_end-to-end test_** for å simulere disse brukerinteraksjonene.
 
     ```javascript
-    test("Legg til kommentar etter innlogging", async () => {
+        test("Legg til kommentar etter innlogging", async () => {
 
-// Simulerer brukerens innlogging
-userEvent.type(screen.getByLabelText("Brukernavn"), "testbruker");
-userEvent.type(screen.getByLabelText("Passord"), "hemmelig");
-userEvent.click(screen.getByText("Logg inn"));
+    // Simulerer brukerens innlogging
+    userEvent.type(screen.getByLabelText("Brukernavn"), "testbruker");
+    userEvent.type(screen.getByLabelText("Passord"), "hemmelig");
+    userEvent.click(screen.getByText("Logg inn"));
 
-// Simulerer brukerens input
-userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
-userEvent.click(screen.getByText("Legg til kommentar"));
+    // Simulerer brukerens input
+    userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
+    userEvent.click(screen.getByText("Legg til kommentar"));
 
-// Sjekker at kommentaren er lagt til i databasen
-expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
-});
+    // Sjekker at kommentaren er lagt til i databasen
+    expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
+    });
 
-```
+    ```
 
 ## Test deg selv
 
 import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
 <SelectCorrect
-question="Hva er formålet med enhetstester?"
-wrong2="Å teste hele applikasjonen fra start"
-correct="Å teste individuelle komponenter eller funksjoner i koden."
-wrong1="Å teste hvordan komponentene samhandler."
+  question="Hva er formålet med enhetstester?"
+  wrong2="Å teste hele applikasjonen fra start"
+  correct="Å teste individuelle komponenter eller funksjoner i koden."
+  wrong1="Å teste hvordan komponentene samhandler."
 />
 
 import LikeThisPage from "../../../../components/LikeThisPage.astro";
 
 <LikeThisPage />
-```
-
-```
-
-```
