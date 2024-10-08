@@ -64,18 +64,18 @@ import { datadogRum } from "@datadog/browser-rum";
     if (typeof datadogRum !== "undefined") {
         console.log('Initializing Datadog RUM');
         datadogRum.init({
-            applicationId: '<APPLICATION_ID>',
-            clientToken: '<CLIENT_TOKEN>',
-            site: 'us5.datadoghq.com',
-            service: 'cid',
-            env: 'prod',
-            version: '1.0.0',
-            sessionSampleRate: 100,
-            sessionReplaySampleRate: 20,
-            trackUserInteractions: true,
-            trackResources: true,
-            trackLongTasks: true,
-            defaultPrivacyLevel: 'mask-user-input',
+			applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
+			clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
+			site: 'us5.datadoghq.com',
+			service: 'cid',
+			env: 'prod',
+			version: '1.0.0',
+			sessionSampleRate: 100,
+			sessionReplaySampleRate: 20,
+			trackUserInteractions: true,
+			trackResources: true,
+			trackLongTasks: true,
+			defaultPrivacyLevel: 'mask-user-input',
         });
 
         datadogRum.setUser({
@@ -88,5 +88,6 @@ import { datadogRum } from "@datadog/browser-rum";
     } else {
         console.error('Datadog RUM library failed to load.');
     }
+	console.log(datadogRum.getUser());
 })();
 </script>
