@@ -14,7 +14,7 @@ export default defineConfig({
 
   integrations: [
     starlight({
-      title: "Velkommen til Git",
+      title: "Velkommen til CI/CD",
 
       logo: {
         light: "./src/assets/Git-Icon-Black.svg",
