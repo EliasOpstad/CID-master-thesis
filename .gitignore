@@ -1,0 +1,31 @@
+# Dependency directories
+node_modules/
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# MacOS specific file
+.DS_Store
+
+# Windows specific file
+Thumbs.db
