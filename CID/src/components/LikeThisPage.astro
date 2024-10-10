@@ -1,6 +1,4 @@
----
 interface Props {}
----
 
 <like-this-page>
   <div class="row">
@@ -21,9 +19,9 @@ interface Props {}
     }
 
     attachEventHandlers() {
-      const likeButton = this.querySelector('button.like');
-      const dislikeButton = this.querySelector('button.dislike');
-      const thanksMessage = this.querySelector('p.thanks');
+      const likeButton = this.querySelector('button.like') as HTMLButtonElement;
+      const dislikeButton = this.querySelector('button.dislike') as HTMLButtonElement;
+      const thanksMessage = this.querySelector('p.thanks') as HTMLParagraphElement;
 
       if (!likeButton || !dislikeButton || !thanksMessage) {
         console.error('Buttons or thanks message not found');
