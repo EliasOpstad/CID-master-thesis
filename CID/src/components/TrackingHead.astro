@@ -53,34 +53,44 @@ import { datadogRum } from "@datadog/browser-rum";
         return userId;
     }
 
-    const userId = getUserID();
-    const isReturningUser = !!getCookie('anonymous_id');
-    const userStatus = isReturningUser ? 'returning' : 'new';
+    function updateReturnCount() {
+        var returnCount = parseInt(getCookie('return_count') || '0');
+        returnCount += 1;
+        setCookie('return_count', returnCount.toString(), 365); // Update count in the cookie
+        console.log(`Updated return count: ${returnCount}`);
+        return returnCount;
+    }
 
-    console.log(`Is returning user: ${isReturningUser}`);
+    const userId = getUserID();
+    const returnCount = updateReturnCount();
+    const userStatus = returnCount > 1 ? 'returning' : 'new';
+
+    console.log(`User ID: ${userId}`);
+    console.log(`Return count: ${returnCount}`);
     console.log(`User status: ${userStatus}`);
 
     // Ensure datadogRum is loaded
     if (typeof datadogRum !== "undefined") {
         console.log('Initializing Datadog RUM');
         datadogRum.init({
-			applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
-			clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
-			site: 'us5.datadoghq.com',
-			service: 'cid',
-			env: 'prod',
-			version: '1.0.0',
-			sessionSampleRate: 100,
-			sessionReplaySampleRate: 20,
-			trackUserInteractions: true,
-			trackResources: true,
-			trackLongTasks: true,
-			defaultPrivacyLevel: 'mask-user-input',
+            applicationId: '4ce61955-8e8d-4a9f-9c80-42aa14e0644f',
+            clientToken: 'pub6d34cd6460b1e3585d79c5b672d126ff',
+            site: 'us5.datadoghq.com',
+            service: 'cid',
+            env: 'prod',
+            version: '1.0.0',
+            sessionSampleRate: 100,
+            sessionReplaySampleRate: 20,
+            trackUserInteractions: true,
+            trackResources: true,
+            trackLongTasks: true,
+            defaultPrivacyLevel: 'mask-user-input',
         });
 
         datadogRum.setUser({
             id: userId || '',
-            status: userStatus
+            status: userStatus,
+            return_count: returnCount
         });
 
         datadogRum.startSessionReplayRecording();
@@ -88,6 +98,5 @@ import { datadogRum } from "@datadog/browser-rum";
     } else {
         console.error('Datadog RUM library failed to load.');
     }
-	console.log(datadogRum.getUser());
 })();
 </script>
