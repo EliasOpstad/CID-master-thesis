@@ -65,7 +65,9 @@ import { datadogRum } from "@datadog/browser-rum";
 		}
 	}
 
-	customElements.define('experience-question', ExperienceQuestion);
+	if (!customElements.get('experience-question')) {
+		customElements.define('experience-question', ExperienceQuestion);
+	}
 </script>
 
 <style>
