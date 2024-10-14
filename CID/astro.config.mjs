@@ -24,8 +24,8 @@ export default defineConfig({
 
       sidebar: [
         { label: "Velkommen!", link: "/" },
-        { label: "Git", autogenerate: { directory: "/git/", collapsed: true } },
         { label: "CI/CD", autogenerate: { directory: "/CICD/" } },
+        { label: "Git", autogenerate: { directory: "/git/", collapsed: true } },
       ],
 
       tableOfContents: false,
