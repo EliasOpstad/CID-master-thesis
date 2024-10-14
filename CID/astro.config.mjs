@@ -24,13 +24,7 @@ export default defineConfig({
 
       sidebar: [
         { label: "Velkommen!", link: "/" },
-
-        { label: "Git", autogenerate: { directory: "/git/" } },
-        // { label: "Git-stages", autogenerate: { directory: "/git-levels/" } },
-        // {
-        //   label: "Git-kommandoer",
-        //   autogenerate: { directory: "/git-commands/" },
-        // },
+        { label: "Git", autogenerate: { directory: "/git/", collapsed: true } },
         { label: "CI/CD", autogenerate: { directory: "/CICD/" } },
       ],
 
