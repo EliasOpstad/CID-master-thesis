@@ -5,22 +5,21 @@ sidebar:
 ---
 
 Etter at byggprosessen er fullført, er det viktig å teste koden din for å sikre at den fungerer som forventet.
-Dette kan inkludere enhetstester, integrasjonstester og end-to-end tester.
+Dette kan inkludere **_enhetstester_**, **_integrasjonstester_** og **_end-to-end_** tester.
 
 ![CI/CD Pipeline](../../../../assets/images/Test.png)
 
-**_Enhetstester_** fokuserer på å teste individuelle komponenter eller funksjoner i koden din.
+- **_Enhetstester_** fokuserer på å teste individuelle komponenter eller funksjoner i koden din.
 
-**_Integrasjonstester_** tester hvordan disse komponentene samhandler.
+- **_Integrasjonstester_** tester hvordan disse komponentene samhandler.
 
-**_End-to-end_** tester simulerer brukerinteraksjoner for å teste hele applikasjonen.
+- **_End-to-end_** tester simulerer brukerinteraksjoner for å teste hele applikasjonen.
 
-Testing er en viktig del av CI/CD-prosessen, og kan bidra til å oppdage feil tidlig i utviklingsprosessen.
+Testing er en essensiell del av CI/CD-prosessen og bidrar til å oppdage feil tidlig i utviklingssyklusen.
 
 ### Eksempel enhetstest
 
-Nettsiden vår har en funksjon for å legge til kommentarer. Vi vil teste at denne funksjonen fungerer som forventet.
-Vi kan skrive en **_enhetstest_** for å sjekke at kommentaren blir lagt til i databasen når brukeren trykker på "Legg til kommentar" knappen.
+Applikasjonen vår har en funksjon for å legge til kommentarer. Vi ønsker å teste at denne funksjonen fungerer som forventet. Vi kan skrive en **_enhetstest_** for å sjekke at en kommentar blir lagt til i databasen når brukeren trykker på "Legg til kommentar" knappen.
 
 ```javascript
 test("Legg til kommentar", () => {
@@ -35,9 +34,7 @@ test("Legg til kommentar", () => {
 
 ### Eksempel integrasjonstest i Docker
 
-Vi har en applikasjon som består av en frontend og en backend. Vi vil teste at frontend og backend kommuniserer riktig.
-Vi kan skrive en **_integrasjonstest_** for å sjekke at frontend kan hente data fra backend.
-Integrasjonstesten kan kjøres i en Docker container for å isolere testene fra resten av systemet.
+Applikasjonen består av en frontend og en backend. Vi vil teste at frontend og backend kommuniserer riktig. Vi kan skrive en **_integrasjonstest_** for å bekrefte at frontend kan hente data fra backend. Integrasjonstesten kan kjøres i en Docker container for å isolere testene fra resten av systemet.
 
 ```javascript
 test("Hente data fra backend", async () => {
