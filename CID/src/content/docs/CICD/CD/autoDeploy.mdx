@@ -4,20 +4,26 @@ sidebar:
   order: 5
 ---
 
-Når vi har bygget, testet og godkjent koden vår, er det på tide å utplassere den til produksjon.
-I vårt eksempel er automatisering av utrulling til produksjon viktig for å sikre at nettsiden vår er alltid oppdatert.
-
 ![CI/CD Pipeline](../../../../assets/images/AutomatiskUtrullingTilProduksjon.png)
 
 ## Automatisere utrulling til produksjon
 
-I en CI/CD-pipeline er det viktig å automatisere utrulling til produksjon for å sikre at koden blir raskt og sikkert utplassert.
-Automatisering av utrulling til produksjon kan bidra til å redusere risikoen for feil og sikre at koden blir utplassert jevnlig og pålitelig.
-Ved å bruke verktøy som Jenkins, CircleCI eller Github Actions, kan du automatisere utrulling til produksjon og sikre at koden din blir raskt tilgjengelig for brukerne.
+Når vi har bygget, testet og godkjent koden vår, er det på tide å utplassere den til produksjon. Automatisering av utrulling til produksjon kan bidra til å redusere risikoen for feil og sikre at koden blir utplassert jevnlig og pålitelig. Etter at koden er utplassert til produksjon, er det viktig å overvåke ytelsen og tilstanden til applikasjonen. Dette kan bidra til å oppdage eventuelle problemer tidlig og sikre at applikasjonen fungerer som forventet. Alt av feil og problemer bør loggføres og håndteres raskt for å sikre en god brukeropplevelse.
 
-Etter at koden er utplassert til produksjon, er det viktig å overvåke ytelsen og tilstanden til applikasjonen.
-Dette kan bidra til å oppdage eventuelle problemer tidlig og sikre at applikasjonen fungerer som forventet.
-Alt av feil og problemer bør loggføres og håndteres raskt for å sikre en god brukeropplevelse.
+### To former for automatisert ttrulling
+
+Det er to hovedformer for automatisert utrulling til produksjon som tilbyr forskjellige nivåer av automatisering og kontroll:
+Continuous Delivery innebærer at koden alltid er klar for utrulling etter at den har passert automatiserte tester. Selve utrullingen til produksjon krever en manuell godkjenning.
+Scenario:
+Situasjoner hvor hver utrulling skal gjennomgå manuelt for ekstra sikkerhet.
+Regulerte industrier som krever manuell gjennomgang for samsvar med regler og forskrifter.
+
+Continuous Deployment tar automatisering et skritt videre ved å automatisere hele utrullingsprosessen til produksjon uten behov for manuelle inngrep, så lenge alle automatiserte tester er vellykket.
+Fordeler:
+Fullstendig automatisering: Hver endring som passerer de automatiserte testene, blir automatisk rullet ut til produksjon.
+Rask tid til markedet: Endringer blir raskt tilgjengelig for sluttbrukere.
+Scenario:
+Hurtigutviklingsmiljøer hvor endring og forbedringer må rulles ut raskt. Situasjoner hvor det er avgjørende å få nye funksjoner og feilrettinger raskt ut til brukerne.
 
 import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
