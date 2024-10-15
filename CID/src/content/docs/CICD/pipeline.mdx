@@ -9,25 +9,10 @@ sidebar:
 import Experience from "../../../components/Experience.astro";
 import LikeThisPage from "../../../components/LikeThisPage.astro";
 
-En CI/CD-pipeline er en serie automatiserte trinn som brukes for å bygge, teste og utrulle programvare.
-CI/CD-pipelinen starter med Continuous Integration, som handler om å integrere endringer i koden ofte og automatisk.
-
-La oss si at vi jobber med en applikasjon, og vi har et team på flere utviklere som jobber på forskjellige funksjoner.
-Denne applikasjonen har en felles kodebase som er lagret i en versjonskontroll, som Github eller Gitlab.
-Tidligere i leksjonen kan dere lære om versjonskontroll med git.
-
-En CI/CD-pipeline må inkludere følgenede trinn:
+En CI/CD-pipeline er en serie automatiserte trinn som forbedrer hvordan små endringer integreres i større prosjekter. Dette sikrer at endringene kan pushes og testes uten å krasje andre deler av applikasjonen. Her er de forskjellige fasene:
 
 ![CI/CD Pipeline](../../../assets/images/Pipeline-main.png)
 
-1. Bygg fase
-2. Test fasen
-3. Utrulling fasen
-4. Automatisere test fasen
-5. Automatisere utrulling til produksjon
-
-I en slik pipeline vil vi bygge koden vår, teste den, og deretter utplassere den til produksjon.
-
-I denne leksjonen vil vi gå steg for steg gjennom en CI/CD-pipeline for en applikasjon.
+Scenario: Du har nettopp blitt ansatt hos en bedrift og skal bidra med å videreutvikle en applikasjon. Bedriften har teams bestående av utviklere som jobber med forskjellige deler ved applikasjonen. I løpet av en dag vil mange små endringer forekomme. Hvordan kan vi klare å gjennomføre mange små endringer ved en applikasjon på tvers av ulike teams problemfritt og effektivt? Hvordan kan du sørge for at dine forandringer ikke påvirker og evt crasher andre deler av applikasjonen?
 
 <LikeThisPage />
