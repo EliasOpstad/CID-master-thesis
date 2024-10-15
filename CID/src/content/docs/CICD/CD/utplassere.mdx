@@ -1,0 +1,30 @@
+---
+title: "Fase 3: Utrull til staging server "
+sidebar:
+  order: 3
+---
+
+Når vi har bygget og testet koden vår, er det tid for å utplassere den til en staging server. Ved en vellykket utplassering En staging server lar oss teste koden i et realistisk miljø før utrulling til produksjon. Dette sikrer at alt fungerer som forventet før det når sluttbrukeren.
+
+![CI/CD Pipeline](../../../../assets/images/Utplassere.png)
+
+## Scenario
+
+Det finnes mange verktøy som kan hjelpe deg med å utplassere koden din på en staging server. To populære verktøy er Docker og Jenkins. Å kombinere disse verktøyene gir følgende fordeler.
+
+- **Automatisert utplassering**: Raskere og mer effektiv testing
+- **Rollback-muligheter**: En enkel og rask tilbakekalling av endringer hvis det oppstår problemer.
+- **Pålitelighet**: Sikrer konsistent drift i et stagingmiljø før produksjon.
+
+import SelectCorrect from "../../../../components/SelectCorrect.astro";
+
+<SelectCorrect
+  question="Hva er formålet med å utplassere koden på en staging server?"
+  correct="For å teste koden i et realistisk miljø før den rulles ut til produksjon."
+  wrong1="For å rulle ut koden til produksjon."
+  wrong2="For å lagre koden på en midlertidig server."
+/>
+
+import LikeThisPage from "../../../../components/LikeThisPage.astro";
+
+<LikeThisPage />
