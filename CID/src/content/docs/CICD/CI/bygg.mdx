@@ -4,44 +4,26 @@ sidebar:
   order: 1
 ---
 
-Se for deg at du jobber med å videreutvikle en applikasjon, og du har en ny funksjon som du ønsker å legge til.
-Koden til applikasjonen er lagret på github, og du har laget en ny branch for å jobbe med den nye funksjonen.
-Du har skrevet koden og ønsker å teste om koden fungerer som forventet.
-For å gjøre dette, må du bygge prosjektet ditt.
-
 ![CI/CD Pipeline](../../../../assets/images/Bygg2.png)
 
-## Bygg
+Når kodenendringen blir pushet til Github (versjonskontrollsystem), utløses CI/CD pipelinen automatisk. Pipelinen starter med byggfasen. I denne fasen bygges prosjektet fra kildekode til et kjørbart format. Dette inkluderer følgende trinn:
 
-Når vi snakker om bygg i konteksten av programvareutvikling,
-refererer vi til prosessen med å kompilere og pakke koden vår slik at den kan kjøres på en maskin.
+1. **_Kompilering av Kode_**: Koden oversettes fra kildekode (som Java, C++, Python) til maskinlesbar kode.
+2. **_Innsamling av Avhengigheter_**
+   Biblioteker og andre nødvendigheter lastes ned og inkluderes i byggeprosessen.
+3. **_Pakking_**: Den kompilerte koden og avhengighetene pakkes sammen til et distribuert format. (F.eks et docker-image).
 
-I eksempelet vist tidligere vil byggprosessen kompilere HTML, CSS og JavaScript-filene dine til en enkelt pakke som kan lastes inn i en nettleser.
-Byggingen kan feile hvis det er syntaksfeil i koden din, eller hvis det er avhengigheter som mangler. (Avhengigheter er andre biblioteker eller rammeverk som koden din er avhengig av for å fungere.)
-Det er derfor viktig å kjøre byggprosessen før du tester koden din.
+## Scenario: Jenkins og Docker
 
-## Bygg verktøy (Docker og Jenkins)
+Jenkins er et verktøy som automatiserer hele CI/CD prosessen. Verktøyet integreres med versjonskontrollsystemet for å bygge, teste og utplassere koden automatisk hver gang endringer pushes. Jenkins har et bredt spekter av plugins for å tilpasse pipelinene til utviklerens behov.
 
-Det finnes mange verktøy som kan hjelpe deg med byggprosessen. To populære verktøy er Docker og Jenkins.
-Begge verktøyene kan automatisere byggprosessen, slik at du kan teste koden din raskere og mer effektivt.
-Forskjellen mellom de to verktøyene er at Docker fokuserer på å pakke applikasjonen din i en container,
-mens Jenkins fokuserer på å automatisere hele CI/CD-prosessen.
-Det er derfor vanlig å bruke begge verktøyene sammen for å oppnå best mulig resultat.
+Docker er et verktøy som dekker trinn 3 i byggfasen. Fordelen ved å bruke docker er at applikasjonen fungerer konsistent på tvers av forskjellige miljøer. Docker tilføyer også sikkerhet, ettersom koden blir pakket inn i en container. Denne containeren
 
-## Docker
-
-Docker er et verktøy som lar deg pakke applikasjonen din og dens avhengigheter i en container.
-En container er en lettvekts virtuell maskin som kjører applikasjonen din isolert fra resten av systemet.
-Dette gjør det enkelt å distribuere applikasjonen din på tvers av forskjellige miljøer, og sikrer at den fungerer som forventet uansett hvor den kjøres.
-Docker inneholder også funksjoner for sikkerhet, som lar deg isolere applikasjonen din fra resten av systemet.
-Dette betyr at selv om en del av applikasjonen din blir kompromittert, vil det ikke påvirke resten av systemet.
-
-## Jenkins
-
-Jenkins er et verktøy som lar deg automatisere hele CI/CD-prosessen.
-Dette betyr at du kan konfigurere Jenkins til å bygge, teste og utplassere koden din automatisk hver gang du gjør en endring.
-Dette sparer deg for tid og reduserer risikoen for feil, da du ikke trenger å gjøre alt manuelt.
-Jenkins har også et stort økosystem av plugins som lar deg tilpasse verktøyet til dine behov.
+Ved å bruke både Docker og Jenkins kan utvikleren:
+Bygge applikasjonen i Jenkins
+Pakke den i en Docker-container
+Automatisere testing og utplassering med Jenkins.
+Dette gir utvikleren en effektiv, konsistent og automatisert utviklings- og utrullingsprosess.
 
 import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
