@@ -6,7 +6,7 @@ sidebar:
 
 ![CI/CD Pipeline](../../../../assets/images/Bygg.png)
 
-Når kodenendringen blir pushet til Github (versjonskontrollsystem), utløses CI/CD pipelinen automatisk. Pipelinen starter med byggfasen. I denne fasen bygges prosjektet fra kildekode til et kjørbart format. Dette inkluderer følgende trinn:
+Når kodenendringen blir pushet til Github (versjonskontrollserver), utløses CI/CD pipelinen automatisk. Pipelinen starter med byggfasen. I denne fasen bygges prosjektet fra kildekode til et kjørbart format. Dette inkluderer følgende trinn:
 
 1. **Kompilering av kode**: Koden oversettes fra kildekode (som Java, C++, Python) til maskinlesbar kode.
 2. **Innsamling av avhengigheter**
@@ -15,7 +15,7 @@ Når kodenendringen blir pushet til Github (versjonskontrollsystem), utløses CI
 
 ## Jenkins og Docker
 
-Jenkins er et verktøy som automatiserer hele CI/CD prosessen. Verktøyet integreres med versjonskontrollsystemet for å bygge, teste og utplassere koden automatisk hver gang endringer pushes. Jenkins har et bredt spekter av plugins for å tilpasse pipelinene til utviklerens behov.
+Jenkins er et verktøy som automatiserer hele CI/CD prosessen. Verktøyet integreres med versjonskontrollserver for å bygge, teste og utplassere koden automatisk hver gang endringer pushes. Jenkins har et bredt spekter av plugins for å tilpasse pipelinene til utviklerens behov.
 
 Docker er et verktøy som dekker trinn 3 i byggfasen. Fordelen ved å bruke docker er at applikasjonen fungerer konsistent på tvers av forskjellige miljøer. Docker tilføyer også sikkerhet, ettersom koden blir pakket inn i en container.
 Dette gir utvikleren en effektiv, konsistent og automatisert utviklings- og utrullingsprosess.
