@@ -7,7 +7,7 @@ Informasjonskapsler er små tekstfiler som lagres på datamaskinen din når du b
 
 ## Datadog
 
-Google setter to informasjonskapsler på nettsiden. Disse heter `_dd_s` og `anonymous_id`. `_dd_s` settes av Datadog for å samle alle hendelser fra en unik brukersesjon på tvers av flere sider. Den inneholder nåværende sesjons-ID, om sesjonen er ekskludert på grunn av sampling, og utløpsdatoen for sesjonen. Informasjonskapselen forlenges med 15 minutter hver gang brukeren interagerer med nettstedet, opptil maksimal varighet på 4 timer.
+Datadog er en observasjonstjeneste som setter to informasjonskapsler på nettsiden. Disse heter `_dd_s` og `anonymous_id`. `_dd_s` settes av Datadog for å samle alle hendelser fra en unik brukersesjon på tvers av flere sider. Den inneholder nåværende sesjons-ID, om sesjonen er ekskludert på grunn av sampling, og utløpsdatoen for sesjonen. Informasjonskapselen forlenges med 15 minutter hver gang brukeren interagerer med nettstedet, opptil maksimal varighet på 4 timer.
 `anonymous_id` brukes til å skille brukere fra hverandre, og til å telle antall besøkende. Informasjonen som samles inn er anonym, og kan ikke spores tilbake til deg som person.
 
 ## Personvern
