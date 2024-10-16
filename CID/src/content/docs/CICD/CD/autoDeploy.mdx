@@ -8,20 +8,21 @@ sidebar:
 
 Når vi har bygget, testet og godkjent koden vår, er det på tide å utplassere den til produksjon. Automatisering av utrulling til produksjon kan bidra til å redusere risikoen for feil og sikre at koden blir utplassert jevnlig og pålitelig. Etter at koden er utplassert til produksjon, er det viktig å overvåke ytelsen og tilstanden til applikasjonen. Dette kan bidra til å oppdage eventuelle problemer tidlig og sikre at applikasjonen fungerer som forventet. Alt av feil og problemer bør loggføres og håndteres raskt for å sikre en god brukeropplevelse.
 
-### To former for automatisert utrulling
+## To former for automatisert utrulling
 
-Det er to hovedformer for automatisert utrulling til produksjon som tilbyr forskjellige nivåer av automatisering og kontroll:
-Continuous Delivery innebærer at koden alltid er klar for utrulling etter at den har passert automatiserte tester. Selve utrullingen til produksjon krever en manuell godkjenning.
-Scenario:
-Situasjoner hvor hver utrulling skal gjennomgå manuelt for ekstra sikkerhet.
-Regulerte industrier som krever manuell gjennomgang for samsvar med regler og forskrifter.
+![Forskjellen mellom Continuous Delivery og Continuous Deployment](../../../../assets/images/CD-diff.png)
 
-Continuous Deployment tar automatisering et skritt videre ved å automatisere hele utrullingsprosessen til produksjon uten behov for manuelle inngrep, så lenge alle automatiserte tester er vellykket.
-Fordeler:
-Fullstendig automatisering: Hver endring som passerer de automatiserte testene, blir automatisk rullet ut til produksjon.
-Rask tid til markedet: Endringer blir raskt tilgjengelig for sluttbrukere.
-Scenario:
-Hurtigutviklingsmiljøer hvor endring og forbedringer må rulles ut raskt. Situasjoner hvor det er avgjørende å få nye funksjoner og feilrettinger raskt ut til brukerne.
+### Fordeler og scenarioer
+
+##### **Kontinuerlig distribusjon (Continuous Delivery)**:
+
+- **Ekstra sikkerhet**: Selve utrullingen til produksjon krever en **_manuell_** godkjenning.
+- **Regulerte industrier**: Situasjoner hvor hver utrulling skal gjennomgå manuelt for ekstra sikkerhet.
+
+##### **Kontinuerlig utplassering (Continuous Deployment)**:
+
+- **Fullstendig automatisering**: Hver endring som passerer de automatiserte testene, blir automatisk rullet ut til produksjon.
+- **Rask tid til markedet**: Endringer blir raskt tilgjengelig for sluttbrukere.
 
 import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
