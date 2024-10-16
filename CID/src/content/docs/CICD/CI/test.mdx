@@ -21,21 +21,27 @@ Testing er en essensiell del av CI/CD-prosessen og bidrar til å oppdage feil ti
 
 Applikasjonen vår har en funksjon for å legge til kommentarer. Vi ønsker å teste at denne funksjonen fungerer som forventet. Vi kan skrive en **_enhetstest_** for å sjekke at en kommentar blir lagt til i databasen når brukeren trykker på "Legg til kommentar" knappen.
 
+<details open>
+<summary>Enhetstest eksempel</summary>
 ```javascript
 test("Legg til kommentar", () => {
   // Simulerer brukerens input
   userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
   userEvent.click(screen.getByText("Legg til kommentar"));
 
-  // Sjekker at kommentaren er lagt til i databasen
-  expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
+// Sjekker at kommentaren er lagt til i databasen
+expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
 });
-```
+
+````
+</details>
 
 ### Eksempel integrasjonstest i Docker
 
 Applikasjonen består av en frontend og en backend. Vi vil teste at frontend og backend kommuniserer riktig. Vi kan skrive en **_integrasjonstest_** for å bekrefte at frontend kan hente data fra backend. Integrasjonstesten kan kjøres i en Docker container for å isolere testene fra resten av systemet.
 
+<details>
+<summary>Integrasjonstest eksempel</summary>
 ```javascript
 test("Hente data fra backend", async () => {
   // Starter frontend og backend i Docker container
@@ -50,13 +56,17 @@ test("Hente data fra backend", async () => {
   // Stopper Docker containerne
   await stopContainers(frontend, backend);
 });
-```
+````
+
+</details>
 
 ### Eksempel end-to-end test
 
 Vi vil teste at hele applikasjonen fungerer som forventet når en bruker logger inn og legger til en kommentar.
 Vi kan skrive en **_end-to-end test_** for å simulere disse brukerinteraksjonene.
 
+<details>
+<summary>End-to-end eksempel</summary>
 ```javascript
 test("Legg til kommentar etter innlogging", async () => {
   // Simulerer brukerens innlogging
@@ -64,14 +74,16 @@ test("Legg til kommentar etter innlogging", async () => {
   userEvent.type(screen.getByLabelText("Passord"), "hemmelig");
   userEvent.click(screen.getByText("Logg inn"));
 
-  // Simulerer brukerens input
-  userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
-  userEvent.click(screen.getByText("Legg til kommentar"));
+// Simulerer brukerens input
+userEvent.type(screen.getByLabelText("Kommentar"), "Dette er en kommentar");
+userEvent.click(screen.getByText("Legg til kommentar"));
 
-  // Sjekker at kommentaren er lagt til i databasen
-  expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
+// Sjekker at kommentaren er lagt til i databasen
+expect(screen.getByText("Dette er en kommentar")).toBeInTheDocument();
 });
+
 ```
+</details>
 
 import SelectCorrect from "../../../../components/SelectCorrect.astro";
 
@@ -85,3 +97,4 @@ import SelectCorrect from "../../../../components/SelectCorrect.astro";
 import LikeThisPage from "../../../../components/LikeThisPage.astro";
 
 <LikeThisPage />
+```
