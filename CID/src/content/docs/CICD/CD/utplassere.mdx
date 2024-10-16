@@ -4,14 +4,13 @@ sidebar:
   order: 3
 ---
 
-Når koden er bygget og testet, er det neste steget å utplassere den til en staging server. En vellykket utplassering til staging serveren gjør at vi kan teste koden i et miljø som er svært likt produksjonsmiljøet. Dette sikrer at alt fungerer som forventet før det når sluttbrukeren.
-
 ![CI/CD Pipeline](../../../../assets/images/staging.png)
 
-## Scenario
+Når koden er bygget og testet, er det neste steget å utplassere den til en staging server. Jenkins kan hjelpe deg med å automatisere utplasseringsprosessen, slik at du raskt og effektivt teste koden din i et realistisk miljø før den rulles ut til produksjon. Dette sikrer at alt fungerer som forventet før det når sluttbrukeren.
 
-Det finnes mange verktøy som kan hjelpe deg med å utplassere koden din på en staging server. To populære verktøy er Docker og Jenkins. Å kombinere disse verktøyene gir følgende fordeler.
+### Hvorfor utplassere til en staging server?
 
+- **Teste i et realistisk miljø**: Koden testes i et miljø som ligner produksjonsmiljøet.
 - **Automatisert utplassering**: Raskere og mer effektiv testing
 - **Rollback-muligheter**: En enkel og rask tilbakekalling av endringer hvis det oppstår problemer.
 - **Pålitelighet**: Sikrer konsistent drift i et stagingmiljø før produksjon.
