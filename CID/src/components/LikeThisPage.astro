@@ -37,6 +37,7 @@
         datadogRum.addAction('like', {
           event_category: 'Like',
           event_label: 'Liked the page',
+          page: window.location.pathname // Current page URL
         });
         disableButtons();
       });
@@ -46,6 +47,7 @@
         datadogRum.addAction('dislike', {
           event_category: 'Dislike',
           event_label: 'Disliked the page',
+          page: window.location.pathname //Current page URL
         });
         disableButtons();
       });
