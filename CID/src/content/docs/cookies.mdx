@@ -3,16 +3,16 @@ title: Bruk av informasjonskapsler
 description: Informasjon om bruk av informasjonskapsler på nettsiden
 ---
 
-Informasjonskapsler er små tekstfiler som lagres på datamaskinen din når du besøker et nettsted. Denne nettsiden bruker Datadog til å samle inn informasjon anonymt om hvordan besøkende interegerer med nettsiden. Dette inkluderer hvilke sider som besøkes, og hva som trykkes på. Informasjonen skal brukes i forbindelse med min masteroppgave. Hvis du ikke ønsker å akseptere informasjonskapsler, kan du endre innstillingene i nettleseren din. Nettsiden fungerer helt likt uten informasjonskapsler.
+Informasjonskapsler er små tekstfiler som lagres på datamaskinen din når du besøker et nettsted. Denne nettsiden bruker Datadog til å samle inn informasjon anonymt om hvordan besøkende interagerer med nettsiden. Dette inkluderer hvilke sider som besøkes og hva som trykkes på. Informasjonen skal brukes i forbindelse med min masteroppgave. Hvis du ikke ønsker å akseptere informasjonskapsler, kan du endre innstillingene i nettleseren din. Nettsiden fungerer helt likt uten informasjonskapsler.
 
 ## Datadog
 
-Datadog er en observasjonstjeneste som setter to informasjonskapsler på nettsiden. Disse heter `_dd_s` og `anonymous_id`. `_dd_s` settes av Datadog for å samle alle hendelser fra en unik brukersesjon på tvers av flere sider. Den inneholder nåværende sesjons-ID, om sesjonen er ekskludert på grunn av sampling, og utløpsdatoen for sesjonen. Informasjonskapselen forlenges med 15 minutter hver gang brukeren interagerer med nettstedet, opptil maksimal varighet på 4 timer.
-`anonymous_id` brukes til å skille brukere fra hverandre, og til å telle antall besøkende. Informasjonen som samles inn er anonym, og kan ikke spores tilbake til deg som person.
+Datadog er en observasjonstjeneste som setter to informasjonskapsler på nettsiden. Disse heter `_dd_s` og `anonymous_id`. `_dd_s` settes av Datadog for å samle alle hendelser fra en unik brukersesjon på tvers av flere sider. Den inneholder nåværende sesjons-ID, om sesjonen er ekskludert på grunn av sampling, og utløpsdatoen for sesjonen. Informasjonskapselen forlenges med 15 minutter hver gang brukeren interagerer med nettstedet, opptil en maksimal varighet på 4 timer.
+`anonymous_id` brukes til å skille brukere fra hverandre og til å telle antall besøkende. Informasjonen som samles inn er anonym, og kan ikke spores tilbake til deg som person.
 
 ## Personvern
 
-Det er strenge regler rundt sporing på nettsider. GDPR har strenge regler for innhenting, oppbevaring og behandling av persondata, samt at Nasjonal kommunikasjonsmyndighet \(NKOM\) har mange regler rundt bruk av cookies i nettleseren. For å forsikre om at data innhentet ikke var brudd på hverken GDPR eller NKOMs regler ble følgende forarbeid gjort:
+Det er strenge regler rundt sporing på nettsider. GDPR har strenge regler for innhenting, oppbevaring og behandling av persondata, samt at Nasjonal kommunikasjonsmyndighet \(NKOM\) har mange regler rundt bruk av cookies i nettleseren. For å forsikre om at data innhentet ikke var brudd på hverken GDPR eller NKOMs regler, ble følgende forarbeid gjort:
 
 - Datadogs guide for å unngå å sende personlig identifiserbar informasjon er fulgt: https://www.datadoghq.com/blog/sensitive-data-management-best-practices/
   Guiden går ut på at man skrur av øvrig datainnhenting som ikke trengs, samt at man sørger for at vanlige måter persondata kan lekkes ikke gjør det.
