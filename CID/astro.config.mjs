@@ -17,8 +17,8 @@ export default defineConfig({
       title: "Velkommen til CI/CD",
 
       logo: {
-        light: "/images/Git/Git-Icon-Black.svg",
-        dark: "/images/Git/Git-Icon-White.svg",
+        light: "/public/images/Git/Git-Icon-Black.svg",
+        dark: "/public/images/Git/Git-Icon-White.svg",
         replacesTitle: false,
       },
 
