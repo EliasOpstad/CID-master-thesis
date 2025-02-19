@@ -38,7 +38,7 @@ import { datadogRum } from "@datadog/browser-rum";
 			function send_event(event_name: string) {
 				//datadogRum
 				console.log(`User experience: ${event_name}`);
-				datadogRum.addAction('experience_event', {
+				datadogRum.addAction('experience_eventGit', {
 					event_category: 'experience Git',
 					event_label: event_name,
 				});
